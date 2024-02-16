@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Information Website</title>
+<style>
+    /* Add these styles to your existing CSS file or create a new one and link it in your HTML */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+header {
+  
+  color: #fff;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  width: fit-content;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+footer {
+  background-color: rgba(244, 244, 244, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  text-align: center;
+}
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+    header {
+      background-color: none;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      
+    }
+    .profile-img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .info {
+      text-align: center;
+    }
+    
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display: flex;">
+    <span>
+    <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="weather" style="display: flex; height: 80px; text-align: start;"></span>
+    <h1>Weather Information- powered samyakGPT</h1></div>
+    <nav>
+      
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">Contact</a></li>
+        <li><button id="mode-toggle">Toggle Dark Mode</button></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="current-weather">
+      <h2>Current Weather</h2>
+      <div id="weather-data">
+        <!-- Weather data will be displayed here -->
+        
+      </div>
+    </section>
+  
+    <section id="forecast">
+      <h2>Forecast</h2>
+      <div id="forecast-data">
+        <!-- Forecast data will be displayed here -->
+      </div>
+    </section>
+    <h1 style="text-align: center;">Satellite Image Display</h1>
+    <img src="https://mausam.imd.gov.in/Satellite/Converted/VIS.gif" alt="satellite" style="height: 400px;"><br>
+    <a href="https://mausam.imd.gov.in/responsive/satellite.php" style="text-decoration: none; border: solid black; background-color: #fff;">click here to get details now</a><br>
+    <h2 style="text-align: center;">Nagpur weather Radar</h2>
+    <img src="https://mausam.imd.gov.in/Radar/animation/Converted/NGP_MAXZ.gif" alt="NAPUR IMG" style="height: 400px;"><br>
+    <a href="https://mausam.imd.gov.in/nagpur/" style="text-decoration: none; border: solid black; background-color: #fff;">click here to get details now</a><br>
+    
+  
+  <!-- Create a div element to hold the map -->
+  <h3 style="text-align: center;">daily updated image of maximum Temperature</h3><br>
+  <div id="map" style="height: 600px;"> <img src="https://mausam.imd.gov.in/backend/assets/pdf_to_img_aiwfb/5_allindianew_65ceca79595b9.png" alt="image" srcset="" style="height: 600px;"></div>
+    
+  </main>
+  <H1 style="text-align: center;"> Developer Information</H1>
+  <div class="container" style="background-color: black;">
+    <img class="profile-img" src="https://c4.wallpaperflare.com/wallpaper/371/264/21/itzmauuuroo-hackers-anonymous-hd-wallpaper-preview.jpg" alt="Your Name">
+    <div class="info">
+      <h2>SAMYAK</h2>
+      <p>hello i am samyak, i am someone who is trying to create a bridge of cooordination between technology and literature by combining my both passion. i have great interest in devlopment , data analysis, writing. I had summarized many books like 1984, tale to two cities, monk who sold his ferari, and many others for reputed sites.</p>
+      <p>Email: samyak@edu.iitc.ac.in</p>
+      <p>Phone: ---------</p>
+  
+    </div>
+    <h3>my portfolio</h3>
+    <p>institute affiliation: prestigious</p>
+    <P>EDUCATION: pursuing BS-DS</P>
+    <P>CERTIFICATIONS: google cloud, dsa , foundational dsa.</P>
+    <p>projects: BOOKiepedia, samyakGPT, Weather app, others.</p>
+    <p>other work: main mind of "PUNARVAS- the rehab" and "LOST TRAILS- a Forest Odyssey".</p> 
+  </div>
+  
+  <footer style="color: black;">
+    <p>&copy; 2024 samyakGPT Website. All rights reserved.</p>
+  </footer>
+
+<script>
+     $(document).ready(function() {
+      const apiKey = '21dc21903729f90dfacefe00b72f55f1';
+      const city = 'NAGPUR';
+    
+      const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    
+      // Fetch current weather data
+      $.get(currentWeatherUrl, function(currentData) {
+        displayCurrentWeather(currentData);
+        setBackground(currentData.weather[0].main);
+      });
+    
+      // Fetch forecast data
+      $.get(forecastUrl, function(forecastData) {
+        displayForecast(forecastData);
+      });
+    
+      function displayCurrentWeather(data) {
+        const weatherData = `
+          <p><strong>City:</strong> ${data.name}</p>
+          <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
+          <p><strong>Weather:</strong> ${data.weather[0].description}</p>
+          <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+          <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+        `;
+        $('#weather-data').html(weatherData);
+      }
+    
+      function displayForecast(data) {
+        let forecastData = '<h3>Forecast</h3>';
+        for (let i = 0; i < data.list.length; i += 8) {
+          const forecast = data.list[i];
+          const forecastDateTime = new Date(forecast.dt * 1000);
+          const forecastDate = forecastDateTime.toDateString();
+          const forecastTime = forecastDateTime.toLocaleTimeString();
+          forecastData += `
+            <div>
+              <p><strong>Date:</strong> ${forecastDate}</p>
+              <p><strong>Time:</strong> ${forecastTime}</p>
+              <p><strong>Temperature:</strong> ${forecast.main.temp}°C</p>
+              <p><strong>Weather:</strong> ${forecast.weather[0].description}</p>
+            </div>
+          `;
+        }
+        $('#forecast-data').html(forecastData);
+      }
+    
+      function setBackground(weather) {
+        const body = $('body');
+        let imageUrl = '';
+        switch (weather) {
+          case 'Clear':
+            imageUrl = 'https://source.unsplash.com/1600x900/?clear-sky';
+            break;
+          case 'Clouds':
+            imageUrl = 'https://source.unsplash.com/1600x900/?cloudy';
+            break;
+          case 'Rain':
+            imageUrl = 'https://source.unsplash.com/1600x900/?rain';
+            break;
+          case 'Drizzle':
+            imageUrl = 'https://source.unsplash.com/1600x900/?drizzle';
+            break;
+          case 'Thunderstorm':
+            imageUrl = 'https://source.unsplash.com/1600x900/?thunderstorm';
+            break;
+          case 'Snow':
+            imageUrl = 'https://source.unsplash.com/1600x900/?snow';
+            break;
+          default:
+            imageUrl = 'https://source.unsplash.com/1600x900/?weather';
+        }
+        body.css('background-image', `url(${imageUrl})`);
+      }
+    });
+    // Example JavaScript code to fetch satellite image from IMD API
+
+const API_KEY = 'your_api_key';
+const API_URL = 'https://city.imd.gov.in/api/cityweather_loc.php?id=42182';
+
+// Function to fetch satellite image
+function fetchSatelliteImage(latitude, longitude, date) {
+    const apiUrl = `${API_URL}?lat=${latitude}&lon=${longitude}&date=${date}&api_key=${API_KEY}`;
+
+    // Make HTTP request
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Handle API response
+            const imageUrl = data.image_url;
+
+            // Display the image on your website
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl;
+            document.body.appendChild(imgElement);
+        })
+        .catch(error => {
+            console.error('Error fetching satellite image:', error);
+        });
+      }
+var map = L.map('map').setView([0, 0], 2);
+
+// Add a tile layer from OpenWeatherMap for satellite imagery
+L.tileLayer('https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={apiKey}', {
+    attribution: 'Map data &copy; <a href="https://openweathermap.org">OpenWeatherMap</a>',
+    layer: 'satellite_new', // Specify the satellite imagery layer
+    apiKey: 'YOUR_21dc21903729f90dfacefe00b72f55f1Y' // Replace 'YOUR_API_KEY' with your actual API key
+}).addTo(map);
+
+
+    </script>
+    
+
+</body>
+</html>
