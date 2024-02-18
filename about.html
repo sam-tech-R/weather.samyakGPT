@@ -53,8 +53,10 @@
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
+  max-width: 90%; /* Limit the width of the overlay content */
+  max-height: 90%; /* Limit the height of the overlay content */
+  overflow: auto; /* Add scrollbars if content exceeds the size */
 }
-
 .close-btn {
   position: absolute;
   height: 60px;
