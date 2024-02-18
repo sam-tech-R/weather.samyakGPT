@@ -89,6 +89,37 @@ body {
     .info {
       text-align: center;
     }
+     .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  max-width: 90%; /* Limit the width of the overlay content */
+  max-height: 90%; /* Limit the height of the overlay content */
+  overflow: auto; /* Add scrollbars if content exceeds the size */
+}
+
+.close-btn {
+  position: absolute;
+  height: 60px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: red;
+}
     
 
 </style>
@@ -109,6 +140,7 @@ body {
         <li><a href="about.html">About</a></li>
         <li><a href="about.html">Contact</a></li>
         <li><button id="mode-toggle">Toggle Dark Mode</button></li>
+        <li><a href="BOOKiepedia.html">BOOKiepedia</a></li>
       </ul>
     </nav>
   </header>
@@ -136,10 +168,15 @@ body {
     <a href="https://mausam.imd.gov.in/nagpur/" style="text-decoration: none; border: solid black; background-color: #fff;">click here to get details now</a><br>
     
   
-  <!-- Create a div element to hold the map -->
+   <!-- Create a div element to hold the map -->
   <h3 style="text-align: center;">daily updated image of maximum Temperature</h3><br>
-  <div id="map" style="height: 600px;"> <img src="https://mausam.imd.gov.in/backend/assets/pdf_to_img_aiwfb/5_allindianew_65ceca79595b9.png" alt="image" srcset="" style="height: 600px;"></div>
-    
+  <div id="map" style="height: max-content;"> <img src="https://mausam.imd.gov.in/backend/assets/pdf_to_img_aiwfb/5_allindianew_65ceca79595b9.png" alt="image" srcset="" style="height: 600px;"></div><br>
+  <h4 style="text-align: center; color: black;">all the upcomming features like ai recommendations etc will be updted here very soon </h4>
+  <p style="text-align: center; color: black;">faq 1. how to use weather information on this site works <br> ans. as you entered site means as user requests for weatherinfo of forecast the request goes to our ai server samyakGPT, samyakGPT approaches the api amd this is how youget result. all the satellite images gets updated on its own as imd updates</p>
+  <div id="container" style="display: flex; flex-direction: column; height: fit-content; background-color: rgba(255, 255, 255, 0.3); border-radius: 1%;"> <div style="height: 200px; padding: 20px; margin: 25px; width: 200px; background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/202305/rainfall_kerala-sixteen_nine.jpg?VersionId=kQwqJ6W0eM4oxU2Uh.DJDltDAOeU5J3A&size=690:388); background-size: cover;"><h3><a href="https://mausam.imd.gov.in/responsive/rainfallinformation.php">rainfall information</a></h3> here you can directly veiw the rainfall information without wandering the complicated site of imd</div>
+  <div style="height: 200px; padding: 20px; margin: 25px; width: 200px; background-image: url(https://media.istockphoto.com/id/1322717990/photo/thick-dark-black-heavy-storm-clouds-covered-summer-sunset-sky-horizon-gale-speed-wind-blowing.jpg?s=612x612&w=0&k=20&c=2YasxBShNC0YX7a-gwZJuCJRjEepEKTngyiyq3PvTws=); background-size: cover;"><h3><a href="https://mausam.imd.gov.in/responsive/monsooninformation.php">mansoon 2024 </h3></a>here you can veiw the onset of manson 2024 and its progress as mansoon is about 6 monts away so this site will get activated in june till then its directs the official imd site</div>
+  <div style="height: 200px; padding: 20px; margin: 25px; width: 200px; background-image: url(https://media.istockphoto.com/id/1400332772/vector/bad-weather.jpg?s=612x612&w=0&k=20&c=6fWcE1PZpGSx0ZQKealKMy7hFkrSN9qvkwPC4EnNsqA=); background-size: contain; color: black;"><h3><a href="https://imdpune.gov.in/hazardatlas/index.html">seasonal Information </h3></a>here you will get alerts about extreme seasonal conditions</div>
+</div>
   </main>
   <H1 style="text-align: center;"> Developer Information</H1>
   <div class="container" style="background-color: black;">
@@ -157,10 +194,21 @@ body {
     <P>CERTIFICATIONS: google cloud, dsa , foundational dsa.</P>
     <p>projects: BOOKiepedia, samyakGPT, Weather app, others.</p>
     <p>other work: main mind of "PUNARVAS- the rehab" and "LOST TRAILS- a Forest Odyssey".</p> 
+      <button id="viewCertBtn" style="border-color: greenyellow;">Click Here to View Certification</button>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeOverlay()">&times;</span>
+      <img src="certggl.png" alt="Certificate Image">
+    </div>
+  </div>
+</div>
   </div>
   
   <footer style="color: black;">
     <p>&copy; 2024 samyakGPT Website. All rights reserved.</p>
+      <a href="https://www.instagram.com/samyak_k2030?igsh=MXF5cjgwdjBlcXNoMA==" target="main">
+   <img src="https://e7.pngegg.com/pngimages/953/528/png-clipart-instagram-icon-logo-desktop-computer-icons-instagram-miscellaneous-text.png" alt="instagram" height="20px">
   </footer>
 
 <script>
@@ -273,6 +321,15 @@ L.tileLayer('https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={
     layer: 'satellite_new', // Specify the satellite imagery layer
     apiKey: 'YOUR_21dc21903729f90dfacefe00b72f55f1Y' // Replace 'YOUR_API_KEY' with your actual API key
 }).addTo(map);
+     function openOverlay() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+document.getElementById("viewCertBtn").addEventListener("click", openOverlay);
 
 
     </script>
