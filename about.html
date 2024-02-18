@@ -35,6 +35,38 @@
     .info {
       text-align: center;
     }
+    .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  height: 60px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: red;
+}
+.footer {
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -50,21 +82,42 @@
     <p>hello i am samyak, i am someone who is trying to create a bridge of cooordination between technology and literature by combining my both passion. i have great interest in devlopment , data analysis, writing.</p>
     <p>Email: samyak@edu.iitb.as.in</p>
     <p>Phone: ---------</p>
-    
 
   </div>
   <h3>my portfolio</h3>
   <p>institute affiliation: IITC</p>
-  <P>EDUCATION: pursuing BS-DS</P>
+  <P>EDUCATION: pursuing ****</P>
   <P>CERTIFICATIONS: google cloud, dsa , foundational dsa.</P>
   <p>projects: BOOKiepedia, samyakGPT, Weather app, others.</p>
   <p>other work: author of "PUNARVAS- the rehab" and "LOST TRAILS- a Forest Odyssey".</p>
+  <p>portfolio link: https://sam-tech.portfolio//</p>
+  <button id="viewCertBtn" style="border-color: greenyellow;">Click Here to View Certification</button>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close-btn" onclick="closeOverlay()">&times;</span>
+      <img src="certggl.png" alt="Certificate Image">
+    </div>
+  </div>
 </div>
-  <footer>
-    2024 copyright BOOKiepedia, samyakGPT.
-    <a href="https://www.instagram.com/samyak_k2030?igsh=MXF5cjgwdjBlcXNoMA==" target="main">
-     <img src="https://e7.pngegg.com/pngimages/953/528/png-clipart-instagram-icon-logo-desktop-computer-icons-instagram-miscellaneous-text.png" alt="instagram" height="20px">
-  </footer>
+<footer style="text-align: center;">
+  2024 copyright BOOKiepedia, samyakGPT.
+  <a href="https://www.instagram.com/samyak_k2030?igsh=MXF5cjgwdjBlcXNoMA==" target="main">
+   <img src="https://e7.pngegg.com/pngimages/953/528/png-clipart-instagram-icon-logo-desktop-computer-icons-instagram-miscellaneous-text.png" alt="instagram" height="20px">
+</footer>
+<script>
+  function openOverlay() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+document.getElementById("viewCertBtn").addEventListener("click", openOverlay);
+
+</script>
 
 </body>
 </html>
+
