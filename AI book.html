@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation AI</title>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<header>
+    <div class="navbar">
+        <div class="nav-logo">
+            <div class="logo"><pre><B><br>        Recommendation Tool</B></pre></div> 
+            <b>BOOKiepedia</b>
+        </div>
+        <div class="nav-links">
+            <a class="about" href="index.html">Home</a>
+            <a class="contact" href="contact.html">Contact</a>
+        </div>
+    </div>
+</header>
+
+<body>
+    <h1>Book Recommendation Tool </h1>
+    <label for="genre"><b>Enter a genre:</b></label>
+    <input type="text" id="genre" placeholder="e.g., philosophy">
+    <button onclick="recommendBook()">Recommend Book</button><br>
+    <p><u><b>note:</b></u> use lower case alphabets and type genre in one word like <br> <e class="g">history, horror , thriller, christianity,..., etc.</e></p>
+
+    <div id="result"></div>
+
+    <script>
+        function recommendBook() {
+            // Simulated book data (replace this with actual data from a database)
+            const books = {
+                "history": ["SPQR: A History of Ancient Rome" , 
+"The Guns of August" , 
+"A People's History of the United States" , 
+"The History of the Peloponnesian War" , 
+"The Rise and Fall of the Third Reich" , 
+"Sapiens: A Brief History of Humankind" , 
+"The Wright Brothers" , 
+"The Hiding Place" , 
+"The Diary of Anne Frank" , 
+"The Histories" 
+ /* ... add 47 more books */],
+                "science": [ "Cosmos" , 
+"A Brief History of Time" , 
+"The Double Helix" , 
+"The Selfish Gene" , 
+"The Immortal Life of Henrietta Lacks" , 
+"The Elegant Universe" , 
+"The Origin of Species" , 
+"The Structure of Scientific Revolutions" , 
+"Silent Spring" , 
+"The Code Book"
+ /* ... add 47 more books */],
+                
+    
+    "fiction": ["To Kill a Mockingbird" , 
+"1984" , 
+"Pride and Prejudice" , 
+"The Great Gatsby" , 
+"One Hundred Years of Solitude" , 
+"The Catcher in the Rye" , 
+"The Lord of the Rings" , 
+"The Hitchhiker's Guide to the Galaxy" , 
+"The Handmaid's Tale" , 
+"The Da Vinci Code"
+ ],
+    "romance": ["Pride and Prejudice" , 
+"Romeo and Juliet" , 
+"Outlander" , 
+"The Notebook" , 
+"Sense and Sensibility" , 
+"Gone with the Wind" , 
+"Jane Eyre" , 
+"The Fault in Our Stars" , 
+"P.S. I Love You" , 
+"Me Before You"
+ ],
+    "philosophy": ["Meditations" , 
+"Beyond Good and Evil" , 
+"The Republic" , 
+"The Prince" , 
+"Thus Spoke Zarathustra" , 
+"Being and Time" , 
+"The Critique of Pure Reason" , 
+"Nicomachean Ethics" , 
+"Discourse on the Method" , 
+"The Tao Te Ching"
+ ],
+    "biography": ["The Diary of Anne Frank" ,
+"Steve Jobs" ,
+"The Glass Castle" ,
+"Unbroken" ,
+"The Immortal Life of Henrietta Lacks" ,
+"The Diary of a Young Girl" ,
+"Educated" ,
+"Born a Crime" ,
+"The Wright Brothers" ,
+"Into the Wild"
+ ],
+    "fantasy": [ "Harry Potter and the Sorcerer's Stone" ,
+"The Hobbit" ,
+"The Name of the Wind" ,
+"A Game of Thrones" ,
+"The Chronicles of Narnia" ,
+"Mistborn: The Final Empire" ,
+"The Lies of Locke Lamora", 
+"The Magicians" ,
+"The Fellowship of the Ring" ,
+"The Priory of the Orange Tree"
+],
+    "selfhelp": ["The 7 Habits of Highly Effective People" ,
+"Atomic Habits" ,
+"How to Win Friends and Influence People" ,
+"The Power of Now" ,
+"Mindset: The New Psychology of Success" ,
+"You Are a Badass" ,
+"Thinking, Fast and Slow" ,
+"The Four Agreements" ,
+"Daring Greatly" ,
+"Eat That Frog!"
+ ],
+    "thriller": ["The Girl with the Dragon Tattoo", 
+"Gone Girl" ,
+"The Da Vinci Code" ,
+"The Silence of the Lambs" ,
+"The Girl on the Train" ,
+"The Bourne Identity" ,
+"The Shining" ,
+"The Girl with a Clock for a Heart" ,
+"The Talented Mr. Ripley" ,
+"The Spy Who Came in from the Cold"
+ ],
+    "horror": ["The Shining" ,
+
+"The Exorcist" ,
+"Dracula" ,
+"Psycho" ,
+"Frankenstein" ,
+"House of Leaves" ,
+"The Haunting of Hill House" ,
+"Bird Box" ,
+"Pet Sematary",
+ ],
+    "mystery": ["The Girl with the Dragon Tattoo" ,
+"Gone Girl" ,
+"The Da Vinci Code" ,
+"The Hound of the Baskervilles" ,
+"Big Little Lies" ,
+"The Maltese Falcon" ,
+"In the Woods" ,
+"The Cuckoo's Calling" ,
+"The No. 1 Ladies' Detective Agency"
+ ],
+    "motivational": ["The 7 Habits of Highly Effective People" ,
+"Atomic Habits" ,
+"How to Win Friends and Influence People" ,
+"The Power of Now" ,
+"You Are a Badass" ,
+"Mindset: The New Psychology of Success" ,
+"Start with Why" ,
+"Think and Grow Rich" ,
+"Dare to Lead" ,
+"The Subtle Art of Not Giving a F*ck",
+ ],
+    "spiritual": ["The Power of Now" ,
+"A New Earth" ,
+"The Bhagavad Gita" ,
+"The Tao Te Ching" ,
+"The Alchemist" ,
+"The Celestine Prophecy" ,
+"Siddhartha" ,
+"The Seven Spiritual Laws of Success" ,
+"The Four Agreements" ,
+"Autobiography of a Yogi",
+ ],
+    "stories": [ ],
+    "buddhism": ["The Heart of the Buddha's Teaching" , 
+"Siddhartha" , 
+"The Dhammapada" , 
+"What the Buddha Taught" , 
+"The Tibetan Book of Living and Dying" , 
+ ],
+    "hinduism": ["Bhagavad Gita" , 
+"The Upanishads" , 
+"The Ramayana" , 
+"The Mahabharata" , 
+"Myth = Mithya: Decoding Hindu Mythology" , 
+ ],
+    "islam": ["The Quran" , 
+"Sahih al-Bukhari" , 
+"In the Footsteps of the Prophet" , 
+"The Road to Mecca" , 
+"The Islamic Enlightenment: The Struggle Between Faith and Reason" , 
+ ],
+    "christianity": ["The Bible" , 
+"Mere Christianity" , 
+"The Chronicles of Narnia" , 
+"The Purpose Driven Life" , 
+"The Case for Christ" , 
+ ],
+            };
+
+            // Get the user input
+            const genreInput = document.getElementById("genre").value.trim();
+
+            // Check if the genre is in the book data
+            if (genreInput in books) {
+                // Show loading message
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = '<p style="colour: white;">we are selecting the best book from your selected genre....</p>';
+
+                // Delay for 3 seconds before displaying the result
+                setTimeout(function () {
+                    // Randomly select a book from the genre
+                    const randomIndex = Math.floor(Math.random() * books[genreInput].length);
+                    const recommendedBook = books[genreInput][randomIndex];
+
+                    // Display the recommendation with attractive formatting
+                    resultDiv.innerHTML = `<p style="font-size: 24px; color: white;">We've selected the best book for you from the genre "${genreInput}"!</p>
+                                            <p style="font-size: 32px; color: lightgreen; font-weight: bold;">${recommendedBook}</p>`;
+                }, 3000); // 3-second delay
+            } else {
+                // Display an error message if the genre is not found
+                alert("Genre not found. Please enter a valid genre.");
+            }
+            function searchBooksByTitle(title) {
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(title)}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Process the API response and display book data
+            displayBooks(data.items);
+        })
+        .catch(error => {
+            console.error('Error fetching books:', error);
+        });
+}
+
+function displayBooks(books) {
+    // Display the list of books on the UI
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    books.forEach(book => {
+        const title = book.volumeInfo.title;
+        const authors = book.volumeInfo.authors.join(', ');
+        const description = book.volumeInfo.description;
+        const thumbnail = book.volumeInfo.imageLinks?.thumbnail;
+        const infoLink = book.volumeInfo.infoLink;
+
+        const bookDiv = document.createElement('div');
+        bookDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p>${description}</p>
+            <img src="${thumbnail}" alt="Book Cover">
+            <button onclick="fetchBookDetails('${infoLink}')">More Information</button>
+        `;
+        resultDiv.appendChild(bookDiv);
+    });
+}
+
+function fetchBookDetails(infoLink) {
+    fetch(infoLink)
+        .then(response => response.json())
+        .then(data => {
+            // Process the API response and display full book details
+            console.log(data); // You can customize how to display the details
+            alert("Book details fetched from API:\n" + JSON.stringify(data, null, 2));
+        })
+        .catch(error => {
+            console.error('Error fetching book details:', error);
+        });
+}
+
+// Example usage
+searchBooksByTitle('Harry Potter');
+
+}
+
+
+    </script>
+</body>
+</html>

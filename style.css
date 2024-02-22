@@ -1,0 +1,281 @@
+body {
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightgoldenrodyellow;
+   
+}
+
+header {
+    background-color: black;
+    color: black;
+    padding: 1em;
+    display: flex;
+    margin: 0;
+    height: 58px;
+    justify-content: space-between;
+    text-align: start;
+    image-rendering: crisp-edges;
+}
+
+
+
+.brand img{
+    width: 44px;
+    padding: 0 8px;
+}
+
+.brand {
+    display: flex;
+    align-items: end;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.welcome {
+    background-color: #000;
+    color: black;
+    padding: 2em;
+    background-image: url(bg2.jpeg);
+}
+.navbar{
+   height: 60px;
+   background-color: #000;
+   color: aliceblue;
+
+
+}
+.navlogo {
+    height: 50px;
+    width: 50px;
+}
+.logo {
+    background-image: url(logo2-modified.png);
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+}
+
+.border {
+    border: 2px solid transparent;
+}
+.border:hover {
+    border: 2px solid white;
+
+}
+#a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.search-bar {
+    text-align: center;
+    padding: 1em;
+}
+
+.content-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.box {
+    
+    padding: 1em;
+    margin: 1em;
+    cursor: pointer;
+    shape-image-threshold: inherit;
+    background-image: url(bgforaiw.jpg);
+    
+}
+.container{
+    height: max-content;
+    background-color:lightgoldenrodyellow;
+    color:black;
+    display: flex;
+    margin: 23px;
+    border-radius: 15px;
+    padding: 40px;
+    background-image: url(bg.jpeg);
+    background-size: cover;
+    
+}
+
+
+.box1 {
+    background-color: white;
+    color: black;
+    gap: 5rem;
+    margin: 15px;
+    text-align: center;
+    height: 250px;
+    background-image: url(box1\ bg.jpeg);
+    background-size: cover;
+    border-radius: 50%;
+}
+.box2 {
+    color: black;
+    background-color: white;
+    margin: 15px;
+    text-align: center;
+    width: 250px;
+    font-size: 10px;
+    height: fit-content;
+    background-image: url(ChatGPT.png);
+    background-position: center;
+    background-size: cover;
+}
+.box3 {
+    color: black;
+    background-color: white;
+    margin: 15px;
+    text-align: center;
+    height: 230px;
+    border-radius: 50%;
+    background-image: url(summary.gif);
+    background-size: cover;
+}
+.box4{
+    color: black;
+    background-color: white;
+    margin: 15px;
+    text-align: center;
+    height: 230px;
+    background-image: url(global\ image.jpeg);
+    background-size: cover;
+    
+}
+.box5{
+    color: black;
+    background-color: white;
+    margin: 15px;
+    text-align: center;
+    height: 230px;
+    background-image: url(best\ reads.png);
+    background-size: cover;
+    border-radius: 50%;
+}
+.box6 {
+    color: black;
+    background-color: white;
+    margin: 15px;
+    text-align: center;
+    height: 230px;
+    background-image: url(music.gif);
+    background-size: cover;
+}
+.nav {
+    color: #000;
+    text-align: right;
+    
+}
+.navbar {
+    text-align: right;
+    height: 60px;
+}
+.border {
+    border: 2px solid transparent;
+}
+.border:hover {
+    border: 2px solid white;
+
+}
+.box {
+    height: fit-content;
+}
+.nav-logo { 
+    display: flex;
+    border-radius: 50px;
+    
+    
+}
+
+.welcome{
+    color: black;
+}
+
+
+/* Additional styles for Today's Recommendation */
+
+.todays-recommendation {
+    text-align: center;
+    padding: 2em;
+}
+
+.todays-recommendation img {
+    max-width: width 80px; ; /* Ensure images don't exceed the container width */
+    height: 100px;    /* Maintain aspect ratio */
+    margin: 0.5em;    /* Add margin between images for spacing */
+}
+
+.footer {
+    text-align: center;
+    align-items: center;
+    background-color: grey;
+    color: black;
+}
+#globalbody {
+    background-image: url(worldrotating.gif);
+}
+.c2b1{
+    margin-bottom: 220px;
+    background-color: gray;
+}
+#box {
+    height: 350px;
+    width: 3500px;
+    background-size: cover;
+    margin: 77px;
+    border-radius: 5%;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+}
+
+#overlay-content {
+    text-align: center;
+}
+
+#welcome-greeting {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
