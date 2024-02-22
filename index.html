@@ -120,7 +120,41 @@ body {
   cursor: pointer;
   color: red;
 }
-    
+ .directory-section {
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.directory-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.directory-list {
+    list-style: none;
+    padding: 0;
+}
+
+.directory-list li {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.directory-list li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: inline-block;
+}
+
+.directory-list li a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}    
 
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -206,6 +240,17 @@ body {
   </div>
 </div>
   </div>
+    <div class="directory-section">
+    <h2>Directory BOOKiepedia related sites</h2>
+    <ul class="directory-list">
+        <li><a href="my content.html">my content</a></li>
+        <li><a href="AI book.html">AI book recommendation</a></li>
+        <li><a href="mainpage.html">Services</a></li>
+        <li><a href="my books.html">my books</a></li>
+        <li><a href="login.html">login</a></li>
+        <!-- Add more list items as needed -->
+    </ul>
+</div> <br>
   
   <footer style="color: black;">
     <p>&copy; 2024 samyakGPT Website. All rights reserved.</p>
