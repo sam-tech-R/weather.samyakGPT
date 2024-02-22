@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: antiquewhite;
+    background-image: url(bgforaiw.jpg);
+    
+    image-rendering: auto;
+
+    background-position: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: black;
+    border-color: black;
+    
+}
+
+h1 {
+    text-align: center;
+    text-shadow: #45a049;
+    color: whitesmoke;
+    size: 80px;
+    text-decoration: double;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: aliceblue;
+}
+p {
+    color: white;
+    text-decoration: wavy;
+}
+.header {
+    color: aliceblue;
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+header{
+    background-color: black;
+}
+.navbar a {
+    color: blue; /* default link color */
+    font-size: 16px; /* default font size */
+    text-decoration: none;
+    padding: 10px; /* default padding */
+}
+
+.navbar a:hover {
+    color: white; /* change color on hover */
+}
+
+.navbar a.about {
+    font-size: 20px; /* increase font size for About */
+    color: white; /* set color to white */
+}
+
+.navbar a.contact {
+    font-size: 20px; /* increase font size for Contact */
+    color: white; /* set color to white */
+}
+.logo {
+    background-image: url(logo.jpeg);
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    text-decoration: none;
+    color: aliceblue;
+}
+.nav {
+    color: #000;
+    text-align: right;
+    
+}
+.navbar {
+    text-align: right;
+    color: azure;
+    
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo .logo {
+    /* Your logo styles go here */
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: lightseagreen; /* Replace with your logo background color */
+}
+
+.nav-logo b {
+    margin-left: 10px; /* Adjust the space between logo and text */
+}
+.nav-links a {
+    color: blue; /* default link color */
+    font-size: 16px; /* default font size */
+    text-decoration: none;
+    margin-left: 20px; /* Adjust the space between links */
+}
+.nav-links a:hover {
+    color: white; /* change color on hover */
+}
+
+.nav-links a.about {
+    font-size: 20px; /* increase font size for About */
+    color: white; /* set color to white */
+}
+
+.nav-links a.contact {
+    font-size: 20px; /* increase font size for Contact */
+    color: white; /* set color to white */
+}
+.border {
+    border: 2px solid transparent;
+}
+.border:hover {
+    border: 2px solid white;
+
+}
+.box {
+    height: fit-content;
+}
+.nav-logo { 
+    display: flex;
+    border-radius: 50px;
+    
+    
+}
+.welcome{
+    color: black;
+}
+
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+   border-radius: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border-color: black;
+    size: 150px;
+    
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+/* Add additional styling as needed */

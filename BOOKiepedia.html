@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation Tool</title>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+#result {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.book {
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book h3 {
+    margin-top: 0;
+}
+
+.book img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.book button {
+    display: block;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.book button:hover {
+    background-color: #0056b3;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://c1.wallpaperflare.com/preview/741/52/995/old-books-book-books-old.jpg);
+    height: 100vh;
+    
+    
+}
+h1 {
+    text-align: center;
+}
+
+#result {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.book {
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book h3 {
+    margin-top: 0;
+}
+
+.book img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.book button {
+    display: block;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.book button:hover {
+    background-color: #0056b3;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+footer {
+    background-color: none;
+    color: white;
+    text-align: center;
+    
+    padding: 1em;
+    bottom: 0;
+    position: static;
+    width: 100%;
+    height: 100px;
+    height: fit-content;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <div class="logo" style="background-image: url(samyak\ gpt.jpg); background-size: contain;"><pre></pre></div> 
+                <b style="color: white;">BOOKiepedia</b>
+            </div>
+            <div class="nav-links">
+                <a class="about" href="index.html">Home</a>
+                <a class="contact" href="contact.html">Contact</a>
+
+            </div>
+        </div>
+    </header>
+    <h1 style="color: white;"> AI book recommendation powered by SamyakGPT</h1>
+    <label for="genre" style="color: white;">Select a genre:</label>
+    <input type="text" id="genre">
+    <button onclick="recommendBook()"  style="background-color: #4caf50; color:  black; border-color: black; size: 150px; cursor: pointer;">Recommend book</button>
+    <p style="color: white;"><u><b>note:</b></u> you can enter any genre, not only genre but anything about which you want to read. <br> <e class="g">socialism, love, hitler , communism, freedom fighters,..., etc.</e></p>
+    
+
+    <div id="result"></div>
+    <footer style="background-color: none; color: white; height: 100px;">
+            
+        <div class="footer" style="height: 100px;">
+            <p>contact us @ Samyakaigithub.com </p>
+        <a href="https://github.com/sahilnagu" target="main">
+            <img src="https://pbs.twimg.com/profile_images/1661161645857710081/6WtDIesg_400x400.png" alt="linked in" height="20px">
+            
+        </a><br>
+        <p> © 2024 all rights reserved </p>
+    </div>
+
+
+    </footer>
+
+    <script>
+        // JavaScript code will be added in subsequent steps
+        function recommendBook() {
+    const genreInput = document.getElementById("genre").value.trim();
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(genreInput)}&maxResults=5`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayBooks(data.items);
+        })
+        .catch(error => {
+            console.error('Error fetching books:', error);
+        });
+}
+
+function displayBooks(books) {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    books.forEach(book => {
+        const title = book.volumeInfo.title;
+        const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
+        const thumbnail = book.volumeInfo.imageLinks?.thumbnail;
+
+        const bookDiv = document.createElement('div');
+        bookDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            ${thumbnail ? `<img src="${thumbnail}" alt="Book Cover">` : ''}
+        `;
+        resultDiv.appendChild(bookDiv);
+    });
+    function recommendBook() {
+    const genreInput = document.getElementById("genre").value.trim();
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(genreInput)}&maxResults=5`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayBooks(data.items);
+        })
+        .catch(error => {
+            console.error('Error fetching books:', error);
+        });
+}
+
+function displayBooks(books) {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    books.forEach(book => {
+        const title = book.volumeInfo.title;
+        const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
+        const thumbnail = book.volumeInfo.imageLinks?.thumbnail;
+        const description = book.volumeInfo.description ? book.volumeInfo.description.substring(0, 150) + '...' : 'No description available';
+        const infoLink = book.volumeInfo.infoLink;
+
+        const bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
+
+        bookDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p>${description}</p>
+            ${thumbnail ? `<img src="${thumbnail}" alt="Book Cover">` : ''}
+            <button onclick="showBookDetails('${infoLink}')">More Details</button>
+        `;
+        resultDiv.appendChild(bookDiv);
+    });
+}
+
+function showBookDetails(infoLink) {
+    window.open(infoLink, '_blank');
+}
+function recommendBook() {
+    const genreInput = document.getElementById("genre").value.trim();
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(genreInput)}&maxResults=5`;
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '<div class="loader"></div>';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.items && data.items.length > 0) {
+                displayBooks(data.items);
+            } else {
+                resultDiv.innerHTML = '<p>No books found for the selected genre.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching books:', error);
+            resultDiv.innerHTML = '<p>An error occurred while fetching books. Please try again later.</p>';
+        });
+}
+
+function displayBooks(books) {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    books.forEach(book => {
+        const title = book.volumeInfo.title;
+        const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
+        const thumbnail = book.volumeInfo.imageLinks?.thumbnail;
+        const description = book.volumeInfo.description ? book.volumeInfo.description.substring(0, 150) + '...' : 'No description available';
+        const infoLink = book.volumeInfo.infoLink;
+
+        const bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
+
+        bookDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p>${description}</p>
+            ${thumbnail ? `<img src="${thumbnail}" alt="Book Cover">` : ''}
+            <button onclick="showBookDetails('${infoLink}')">More Details</button>
+        `;
+        resultDiv.appendChild(bookDiv);
+    });
+}
+
+function showBookDetails(infoLink) {
+    window.open(infoLink, '_blank');
+}
+function recommendBook() {
+    const genreInput = document.getElementById("genre").value.trim();
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${encodeURIComponent(genreInput)}&maxResults=5`;
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '<div class="loader"></div>';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.items && data.items.length > 0) {
+                displayBooks(data.items);
+            } else {
+                resultDiv.innerHTML = '<p>No books found for the selected genre.</p>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching books:', error);
+            resultDiv.innerHTML = '<p>An error occurred while fetching books. Please try again later.</p>';
+        });
+}
+function displayBooks(books) {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = '';
+
+    books.forEach(book => {
+        const title = book.volumeInfo.title;
+        const authors = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown';
+        const thumbnail = book.volumeInfo.imageLinks?.thumbnail;
+        const description = book.volumeInfo.description ? book.volumeInfo.description.substring(0, 150) + '...' : 'No description available';
+        const infoLink = book.volumeInfo.infoLink;
+
+        const bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
+
+        bookDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p><strong>Authors:</strong> ${authors}</p>
+            <p>${description}</p>
+            ${thumbnail ? `<img src="${thumbnail}" alt="Book Cover">` : ''}
+            <button onclick="showBookDetails('${infoLink}')">More Details</button>
+        `;
+        resultDiv.appendChild(bookDiv);
+    });
+}
+function showBookDetails(infoLink) {
+    window.open(infoLink, '_blank');
+}
+
+
+}
+
+    </script>
+</body>
+</html>
