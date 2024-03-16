@@ -154,6 +154,32 @@ body {
 .directory-list li a:hover {
     transform: translateY(-3px);
     opacity: 0.8;
+} 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.alert-container {
+  background-color: BLACK;
+  color: red;
+  background-image: url(https://nagpurupdates.com/wp-content/uploads/2024/02/screenshot-www.google.com-2024.02.11-09_32_35.png);
+  background-size: cover;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }    
 
 </style>
@@ -180,6 +206,15 @@ body {
   </header>
   
   <main>
+       <!-- Weather Alert Overlay -->
+  <div id="alertOverlay" class="overlay hidden">
+    <div class="alert-container">
+      <h2>Weather Alert!</h2>
+      <H4>weather conditions in nagpur may attain to hailstrom <br>over the district on 17 march and light to moderate <br> rain with thunderstrom may hit city on 17 and 18 march</H4>
+      <p id="alertMessage"></p>
+      <button id="closeAlertBtn">Close</button>
+    </div>
+  </div>
     <section id="current-weather">
       <h2>Current Weather</h2>
       <div id="weather-data">
@@ -258,7 +293,62 @@ body {
    <img src="https://e7.pngegg.com/pngimages/953/528/png-clipart-instagram-icon-logo-desktop-computer-icons-instagram-miscellaneous-text.png" alt="instagram" height="20px">
   </footer>
 
-<script>
+<script>// Weather conditions in Nagpur
+const weatherConditions = {
+  rain: true, // true if there's rain
+  thunderstorm: true, // true if there's a thunderstorm
+  lightning: true, // true if there's lightning
+  hailstorm: true // true if there's a hailstorm
+};
+
+// Function to display the alert overlay with message and vibrate device
+function displayAlert(message) {
+  // Vibrate device for 4 seconds
+  navigator.vibrate(4000);
+
+  const alertOverlay = document.getElementById("alertOverlay");
+  const alertMessage = document.getElementById("alertMessage");
+  alertMessage.textContent = message;
+  alertOverlay.classList.remove("hidden");
+}
+
+// Function to close the alert overlay
+function closeAlert() {
+  const alertOverlay = document.getElementById("alertOverlay");
+  alertOverlay.classList.add("hidden");
+}
+
+// Weather alert messages
+const weatherAlerts = {
+  rain: "Heavy rain alert in Nagpur!",
+  thunderstorm: "Thunderstorm alert in Nagpur!",
+  lightning: "Lightning alert in Nagpur!",
+  hailstorm: "Hailstorm alert in Nagpur!"
+};
+
+// Function to check weather conditions and display appropriate alert
+function checkWeatherConditions() {
+  if (weatherConditions.rain) {
+    displayAlert(weatherAlerts.rain);
+  }
+  if (weatherConditions.thunderstorm) {
+    displayAlert(weatherAlerts.thunderstorm);
+  }
+  if (weatherConditions.lightning) {
+    displayAlert(weatherAlerts.lightning);
+  }
+  if (weatherConditions.hailstorm) {
+    displayAlert(weatherAlerts.hailstorm);
+  }
+}
+
+// Event listener for close button
+document.getElementById("closeAlertBtn").addEventListener("click", closeAlert);
+
+// Check weather conditions when the page loads
+checkWeatherConditions();
+
+
      $(document).ready(function() {
       const apiKey = '21dc21903729f90dfacefe00b72f55f1';
       const city = 'NAGPUR';
