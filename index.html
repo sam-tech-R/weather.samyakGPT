@@ -155,7 +155,7 @@ body {
     transform: translateY(-3px);
     opacity: 0.8;
 } 
-.overlay {
+.overlay2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -207,7 +207,7 @@ body {
   
   <main>
        <!-- Weather Alert Overlay -->
-  <div id="alertOverlay" class="overlay hidden">
+  <div id="alertOverlay2" class="overlay hidden">
     <div class="alert-container">
       <h2>Weather Alert!</h2>
       <H4>weather conditions in nagpur may attain to hailstrom <br>over the district on 17 march and light to moderate <br> rain with thunderstrom may hit city on 17 and 18 march</H4>
@@ -306,7 +306,7 @@ function displayAlert(message) {
   // Vibrate device for 4 seconds
   navigator.vibrate(4000);
 
-  const alertOverlay = document.getElementById("alertOverlay");
+  const alertOverlay2 = document.getElementById("alertOverlay2");
   const alertMessage = document.getElementById("alertMessage");
   alertMessage.textContent = message;
   alertOverlay.classList.remove("hidden");
@@ -314,8 +314,8 @@ function displayAlert(message) {
 
 // Function to close the alert overlay
 function closeAlert() {
-  const alertOverlay = document.getElementById("alertOverlay");
-  alertOverlay.classList.add("hidden");
+  const alertOverlay2 = document.getElementById("alertOverlay2");
+  alertOverlay2.classList.add("hidden");
 }
 
 // Weather alert messages
