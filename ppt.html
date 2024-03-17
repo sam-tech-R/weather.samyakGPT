@@ -12,6 +12,9 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
+            background-image: url(https://www.mckinsey.com/~/media/mckinsey/featured%20insights/mckinsey%20explainers/what%20is%20ai/what-is-ai-1270595233-standard-1536x1536.jpg);
+            background-size: cover;
+            background-position: 50%;
         }
 
         /* Header Styles */
@@ -240,6 +243,10 @@ button[type="submit"] {
   width: 100%;
   font-size: 16px;
 }
+.loading-message {
+  color: #000; /* Dark black color */
+}
+
     </style>
 </head>
 <body>
@@ -314,8 +321,8 @@ button[type="submit"] {
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
         });
-        document.addEventListener('DOMContentLoaded', function() {
-  const pdfFiles = ['culture1.pdf', 'culture2.pdf', 'culture3.pdf', 'culture4.pdf', 'culture5.pdf', 'culture6.pdf', 'culture7.pdf', 'culture8.pdf', 'culture9.pdf', 'culture10.pdf']; // Replace with your list of PDFs
+       document.addEventListener('DOMContentLoaded', function() {
+  const pdfFiles = ['example1.pdf', 'example2.pdf', 'example3.pdf']; // Replace with your list of PDFs
   const downloadBtn = document.getElementById('downloadBtn');
 
   downloadBtn.addEventListener('click', function() {
@@ -324,7 +331,8 @@ button[type="submit"] {
 
     // Show a loading message or animation
     const loadingMessage = document.createElement('p');
-    loadingMessage.textContent = 'Preparing your PPT on requested topic. Please wait...';
+    loadingMessage.textContent = 'Preparing your PDF. Please wait...';
+    loadingMessage.classList.add('loading-message'); // Add class for styling
     loadingMessage.style.fontStyle = 'italic';
     document.getElementById('pdfList').appendChild(loadingMessage);
 
@@ -334,15 +342,40 @@ button[type="submit"] {
       setTimeout(function() {
         const randomIndex = Math.floor(Math.random() * pdfFiles.length);
         const randomPdf = pdfFiles[randomIndex];
-        window.location.href = randomPdf;
+        
+        // Create an anchor element to trigger download
+        const anchor = document.createElement('a');
+        anchor.href = randomPdf;
+        anchor.download = 'presentation.pdf';
+        anchor.style.display = 'none';
+        document.body.appendChild(anchor);
+        
+        // Trigger download
+        anchor.click();
+        
+        // Remove the anchor element from the DOM
+        document.body.removeChild(anchor);
+
         // Re-enable the button after download is initiated
         downloadBtn.disabled = false;
+
         // Remove the loading message
         loadingMessage.remove();
+
+        // Show notification after download completion
+        const notification = document.createElement('div');
+        notification.textContent = 'Download complete! Click here to view or check in downloads.';
+        notification.classList.add('notification');
+        notification.addEventListener('click', function() {
+          // Navigate to the downloads section or open the downloaded file
+          // Example: window.location.href = 'path/to/downloads';
+        });
+        document.body.appendChild(notification);
       }, 4000); // Delay for 4 seconds before initiating download
     }, 4000); // Delay for 4 seconds before simulating download
   });
 });
+
 
     </script>
 </body>
