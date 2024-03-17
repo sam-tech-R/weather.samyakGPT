@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamyakGPT</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            color: #333;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 15px;
+        }
+
+        .nav-links li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #666;
+        }
+
+        button {
+            height: 70px;
+            
+            
+            background-color: whitesmoke;
+            font-size: 30px;
+            color: black;
+            border: solid black;
+            border-width: 2px;
+            
+            padding: 10px 20px;
+            cursor: pointer;
+            
+        }
+
+
+        /* Welcome Section Styles */
+        .welcome-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .dark-mode button,
+        .dark-mode .nav-links li a {
+            background-color: #444;
+            background-image: none;
+            font-size: 10px;
+        }
+
+        .dark-mode button:hover,
+        .dark-mode .nav-links li a:hover {
+            background-color: #333;
+        }
+        @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+
+    .nav-links li a {
+        font-size: 0.8rem;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsive navigation menu */
+@media screen and (max-width: 600px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    /* Hamburger menu icon */
+    .nav-toggle {
+        display: block;
+        order: 1;
+    }
+
+    .nav-toggle input {
+        display: none;
+    }
+
+    .nav-toggle label {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    .nav-toggle label:hover {
+        background-color: #444;
+    }
+
+    .nav-toggle label span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px auto;
+    }
+}
+.download-btn:hover {
+  background-color: #0056b3; /* New color on hover */
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SamyakGPT</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="https://sam-tech-r.github.io/weather.samyakGPT/mainpage.html">About</a></li>
+                <li><a href="https://sam-tech-r.github.io/weather.samyakGPT/index.html">Services</a></li>
+                <li><a href="https://sam-tech-r.github.io/weather.samyakGPT/index.html">Contact</a></li>
+            </ul>
+            <button id="darkModeToggle" style="background-image: none; height: 23px; color: #444; text-align: center; align-items: center; font-size: 10px;">Dark Mode</button>
+        </nav>
+    </header>
+
+    <section class="welcome-section">
+        <h1>Welcome to SamyakGPT, we are introducing you to our new component PPT generator</h1></section>
+        <h2 style="text-align: center;">create your PPT</h2>
+  <form id="pptForm">
+    <div class="form-group">
+      <label for="topic">Topic:</label>
+      <input type="text" id="topic" name="topic" required>
+    </div>
+    <div class="form-group">
+      <label for="writingTone">Writing Tone:</label>
+      <select id="writingTone" name="writingTone">
+        <option value="creative">Creative</option>
+        <option value="professional">Professional</option>
+        <option value="casual">Casual</option>
+        <option value="formal">Formal</option>
+        <option value="unspecified">Unspecified</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="language">Language:</label>
+      <select id="language" name="language">
+        <option value="english" selected>English</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="style">Style:</label>
+      <select id="style" name="style">
+        <option value="professional">Professional</option>
+        <option value="geometric">Geometric</option>
+        <option value="colourful">Colourful</option>
+      </select>
+    </div>
+
+  </form>
+        
+       
+    <main>
+        <section id="pdfList"></section>
+        <button id="downloadBtn" class="download-btn"><b>Generate PPT</b></button>
+      </main><br><br>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/learning/certificates/066aafd85a6e6996f94efdf3fe73aefbc0e268936523e0f690a08b04bbdb27b8?trk=share_certificate"><img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/linkedin_plain_logo_icon_146432.png" alt="LinkedIn" style="height: 20px;"></a>
+            <a href="https://www.instagram.com/samyakgpt?igsh=MXF5cjgwdjBlcXNoMA=="><img src="https://static.vecteezy.com/system/resources/thumbnails/014/414/683/small/instagram-black-logo-on-transparent-background-free-vector.jpg" alt="Instagram" style="height: 20px;"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="height: 20px;"></a>
+        </div><br>
+        <div>© 2023 BOOKiepedia Inc. All rights reserved. <br><br> ppt generator  <br><br> SamyakGPT & BOOKiepedia </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+  const pdfFiles = ['culture1.pdf', 'culture2.pdf', 'culture3.pdf', 'culture4.pdf', 'culture5.pdf', 'culture6.pdf', 'culture7.pdf', 'culture8.pdf', 'culture9.pdf', 'culture10.pdf']; // Replace with your list of PDFs
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  downloadBtn.addEventListener('click', function() {
+    // Disable the button to prevent multiple clicks
+    downloadBtn.disabled = true;
+
+    // Show a loading message or animation
+    const loadingMessage = document.createElement('p');
+    loadingMessage.textContent = 'Preparing your PPT on requested topic. Please wait...';
+    loadingMessage.style.fontStyle = 'italic';
+    document.getElementById('pdfList').appendChild(loadingMessage);
+
+    // Simulate preparing the PDF
+    setTimeout(function() {
+      // Simulate downloading the PDF
+      setTimeout(function() {
+        const randomIndex = Math.floor(Math.random() * pdfFiles.length);
+        const randomPdf = pdfFiles[randomIndex];
+        window.location.href = randomPdf;
+        // Re-enable the button after download is initiated
+        downloadBtn.disabled = false;
+        // Remove the loading message
+        loadingMessage.remove();
+      }, 4000); // Delay for 4 seconds before initiating download
+    }, 4000); // Delay for 4 seconds before simulating download
+  });
+});
+
+    </script>
+</body>
+</html>
