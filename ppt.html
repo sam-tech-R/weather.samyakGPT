@@ -246,6 +246,27 @@ button[type="submit"] {
 .loading-message {
   color: green;
 }
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+}
+
+.overlay p {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+}        
 
     </style>
 </head>
@@ -315,42 +336,56 @@ button[type="submit"] {
     </footer>
 
     <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
+         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
 
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
         });
-        document.addEventListener('DOMContentLoaded', function() {
-  const pdfFiles = ['culture1.pdf', 'culture2.pdf', 'culture3.pdf', 'culture4.pdf', 'culture5.pdf', 'culture6.pdf', 'culture7.pdf', 'culture8.pdf', 'culture9.pdf', 'culture10.pdf', 'cultureshagun.pdf', 'cultureshagun2.pdf', 'cultureshagun3.pdf', 'cultureshagun4.pdf', 'cultureshagun5.pdf']; // Replace with your list of PDFs
-  const downloadBtn = document.getElementById('downloadBtn');
-
-  downloadBtn.addEventListener('click', function() {
-    // Disable the button to prevent multiple clicks
-    downloadBtn.disabled = true;
-
-    // Show a loading message or animation
-    const loadingMessage = document.createElement('p');
-    loadingMessage.textContent = 'Preparing your PPT on requested topic. Please wait... cheak downloads in your browser';
-    loadingMessage.style.fontStyle = 'italic';
-    loadingMessage.classList.add('loading-message');  
-    document.getElementById('pdfList').appendChild(loadingMessage);
-
-    // Simulate preparing the PDF
-    setTimeout(function() {
-      // Simulate downloading the PDF
-      setTimeout(function() {
-        const randomIndex = Math.floor(Math.random() * pdfFiles.length);
-        const randomPdf = pdfFiles[randomIndex];
-        window.location.href = randomPdf;
-        // Re-enable the button after download is initiated
-        downloadBtn.disabled = false;
-        // Remove the loading message
-        loadingMessage.remove();
-      }, 4000); // Delay for 4 seconds before initiating download
-    }, 4000); // Delay for 4 seconds before simulating download
-  });
-});
+      document.addEventListener('DOMContentLoaded', function() {
+          const pdfFiles = ['culture1.pdf', 'culture2.pdf', 'culture3.pdf', 'culture4.pdf', 'culture5.pdf', 'culture6.pdf', 'culture7.pdf', 'culture8.pdf', 'culture9.pdf', 'culture10.pdf', 'cultureshagun.pdf', 'cultureshagun2.pdf', 'cultureshagun3.pdf', 'cultureshagun4.pdf', 'cultureshagun5.pdf']; // Replace with your list of PDFs
+          const downloadBtn = document.getElementById('downloadBtn');
+  
+          downloadBtn.addEventListener('click', function() {
+              // Disable the button to prevent multiple clicks
+              downloadBtn.disabled = true;
+  
+              // Show a loading message or animation
+              const loadingMessage = document.createElement('p');
+              loadingMessage.textContent = 'Preparing your PPT on requested topic. Please wait...';
+              loadingMessage.style.fontStyle = 'italic';
+              loadingMessage.classList.add('loading-message');
+              document.getElementById('pdfList').appendChild(loadingMessage);
+  
+              // Simulate preparing the PDF
+              setTimeout(function() {
+                  // Simulate downloading the PDF
+                  setTimeout(function() {
+                      const randomIndex = Math.floor(Math.random() * pdfFiles.length);
+                      const randomPdf = pdfFiles[randomIndex];
+                      window.location.href = randomPdf;
+  
+                      // Re-enable the button after download is initiated
+                      downloadBtn.disabled = false;
+                      // Remove the loading message
+                      loadingMessage.remove();
+  
+                      // Display overlay after download
+                      const overlay = document.createElement('div');
+                      overlay.classList.add('overlay');
+                      const overlayText = document.createElement('p');
+                      overlayText.textContent = 'Your download has started. Please check your browser\'s download section.';
+                      overlay.appendChild(overlayText);
+                      document.body.appendChild(overlay);
+  
+                      // Remove overlay after a few seconds
+                      setTimeout(function() {
+                          overlay.remove();
+                      }, 5000); // Adjust the time as needed
+                  }, 4000); // Delay for 4 seconds before initiating download
+              }, 4000); // Delay for 4 seconds before simulating download
+          });
+      });
 
     </script>
 </body>
