@@ -266,12 +266,37 @@ button[type="submit"] {
     padding: 20px;
     background-color: #333;
     border-radius: 10px;
-}        
+}
+.site-notice {
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999; /* Set a high z-index to ensure it appears above other elements */
+        }
+
+        /* Style for the navbar */
+        header { 
+            position: fixed;
+            top: 40px; /* Adjust based on the height of the site notice */
+            left: 0;
+            width: 100%;
+            z-index: 999; /* Set a lower z-index than the site notice */
+        }
+
+        /* Style for the main content */
+        .main-content {
+            margin-top: 90px; /* Adjust based on the height of the site notice and navbar */
+        }        
 
     </style>
 </head>
 <body>
-    <header>
+    <header> <br> <br> <br>
         <nav>
             <div class="logo">SamyakGPT</div>
             <ul class="nav-links">
@@ -283,6 +308,9 @@ button[type="submit"] {
             <button id="darkModeToggle" style="background-image: none; height: 23px; color: #444; text-align: center; align-items: center; font-size: 10px;">Dark Mode</button>
         </nav>
     </header>
+    <div class="site-notice">
+        Sorry, the site is temporarily down. but you still can generate ppt on specific topics only. sorry for the inconvenience.  - Samyak, BOOKiepedia,samyakGPT.
+    </div><br><br><br><br> <br>
 
     <section class="welcome-section">
         <h1>Welcome to SamyakGPT, we are introducing you to our new component PPT generator</h1></section>
